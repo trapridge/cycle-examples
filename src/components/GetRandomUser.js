@@ -1,10 +1,8 @@
-import xs from 'xstream';
-import {div, button, h3, h2, h4, a, makeDOMDriver} from '@cycle/dom';
+import {div, button, h3, h2, h4, a, makeDOMDriver} from '@cycle/dom'
 
-function intent(sources) {
+export function intent(sources) {
   return {
-    randomUserRequest$: sources.DOM.select('.get-random')
-      .events('click')
+    randomUserRequest$: sources.DOM.select('.get-random').events('click')
       .map(() => {
         const randomNum = Math.round(Math.random() * 9) + 1;
         return {
@@ -18,16 +16,16 @@ function intent(sources) {
     }
   }
   
-  function model(actions$) {
-    return actions$
+export function model(actions$) {
+  return actions$
     .map(res => res.body)
     .startWith(null)
 }
 
-function view(state$) {
+export function view(state$) {
   return state$
     .map(user =>
-      div('.users', [
+      div('.users .example', [
         h2('GetRandomUser'),
         button('.get-random', 'Get random user'),
         user === null ? null : div('.user-details', [
@@ -39,7 +37,7 @@ function view(state$) {
     )
 }
 
-export function GetRandomUser(sources) {
+export default function GetRandomUser(sources) {
   const {randomUserRequest$, randomUserResponse$} = intent(sources)
   const vdom$= view(model(randomUserResponse$)) 
 

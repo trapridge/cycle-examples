@@ -1,12 +1,12 @@
-import {div, p, h2} from '@cycle/dom'
 import xs from 'xstream'
+import {div, p, h2} from '@cycle/dom'
 
-export function SecondsElapsed(sources) {
+export default function SecondsElapsed(sources) {
   return {
     DOM: xs
       .periodic(1000)
       .map(i => 
-        div([
+        div('.example', [
           h2('SecondsElapsed'),
           p(`${i} seconds elapsed`)
         ])

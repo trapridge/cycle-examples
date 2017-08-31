@@ -1,44 +1,8 @@
 import {run} from '@cycle/run'
-import {makeDOMDriver, div, h1} from '@cycle/dom'
-import {makeHTTPDriver} from '@cycle/http';
-import xs from 'xstream'
+import {makeDOMDriver} from '@cycle/dom'
+import {makeHTTPDriver} from '@cycle/http'
 
-import {SecondsElapsed} from './components/SecondsElapsed'
-import {CheckBox} from './components/CheckBox'
-import {GetRandomUser} from './components/GetRandomUser'
-import {BMI} from './components/BMI'
-import {LabeledSliderBMI} from './components/LabeledSliderBMI'
-
-function Examples(sources) {
-  const {DOM: elapsedDOM$} = SecondsElapsed(sources)
-  const {DOM: checkBoxDOM$} = CheckBox(sources)
-  const {
-    DOM: getRandomUserDOM$, 
-    HTTP: getRandomUserHTTP$
-  } = GetRandomUser(sources)
-  const {DOM: bmiDOM$} = BMI(sources)
-  const {DOM: labeledSliderBmiDOM$} = LabeledSliderBMI(sources)
-
-  const vDOM$ = xs
-    .combine(elapsedDOM$, checkBoxDOM$, getRandomUserDOM$, bmiDOM$, labeledSliderBmiDOM$)
-    .map(([elapsedDOM, testComponentDOM, getRandomUserDOM, bmiDOM, labeledSliderBmiDOM]) => 
-      div([
-        h1('Examples'),
-        elapsedDOM,
-        testComponentDOM,
-        getRandomUserDOM,
-        bmiDOM,
-        labeledSliderBmiDOM
-      ])
-    )
-
-  const http$ = xs.merge(getRandomUserHTTP$) 
-
-  return {
-    DOM: vDOM$,
-    HTTP: http$
-  }
-}
+import {Examples} from './Examples'
 
 const drivers = {
   DOM: makeDOMDriver('#app'),

@@ -1,7 +1,7 @@
 import xs from 'xstream';
 import {div, input, h2, h3} from '@cycle/dom';
 
-function intent(sources) {
+export function intent(sources) {
   return {
     weight$: sources.DOM.select('.weight')
       .events('input')
@@ -12,7 +12,7 @@ function intent(sources) {
   }
 }
 
-function model(actions) {
+export function model(actions) {
   const {weight$, height$} = actions
   return xs.combine(weight$.startWith(70), height$.startWith(170))
     .map(([weight, height]) => {
@@ -22,9 +22,9 @@ function model(actions) {
     })
 }
 
-function view(state$) {
+export function view(state$) {
   return state$.map(({weight, height, bmi}) =>
-    div([
+    div('.example', [
       h2('BMI'),
       div([
         input('.weight', 
@@ -41,6 +41,6 @@ function view(state$) {
   )
 }
 
-export function BMI(sources) {
+export default function BMI(sources) {
   return {DOM: view(model(intent(sources)))}
 }
