@@ -1,13 +1,16 @@
 import {div, h1} from '@cycle/dom'
 import xs from 'xstream'
 
+import TicTacToe from './components/TicTacToe'
 import SecondsElapsed from './components/SecondsElapsed'
 import CheckBox from './components/CheckBox'
 import GetRandomUser from './components/GetRandomUser'
 import BMI from './components/BMI'
 import LabeledSliderBMI from './components/LabeledSliderBMI'
+import LabeledSliderCircle from './components/LabeledSliderCircle'
 
 export function Examples(sources) {
+  const {DOM: ticTacToeDOM$} = TicTacToe(sources)
   const {DOM: elapsedDOM$} = SecondsElapsed(sources)
   const {DOM: checkBoxDOM$} = CheckBox(sources)
   const {
@@ -16,17 +19,35 @@ export function Examples(sources) {
   } = GetRandomUser(sources)
   const {DOM: bmiDOM$} = BMI(sources)
   const {DOM: labeledSliderBmiDOM$} = LabeledSliderBMI(sources)
+  const {DOM: labeledSliderCircleDOM$} = LabeledSliderCircle(sources)
 
   const vDOM$ = xs
-    .combine(elapsedDOM$, checkBoxDOM$, getRandomUserDOM$, bmiDOM$, labeledSliderBmiDOM$)
-    .map(([elapsedDOM, testComponentDOM, getRandomUserDOM, bmiDOM, labeledSliderBmiDOM]) => 
+    .combine(
+      ticTacToeDOM$,
+      elapsedDOM$, 
+      checkBoxDOM$, 
+      getRandomUserDOM$, 
+      bmiDOM$, 
+      labeledSliderBmiDOM$, 
+      labeledSliderCircleDOM$
+    )
+    .map(([
+        ticTacToeDOM,
+        elapsedDOM, 
+        testComponentDOM, 
+        getRandomUserDOM, 
+        bmiDOM, 
+        labeledSliderBmiDOM, 
+        labeledSliderCircleDOM]) => 
       div([
         h1('Examples'),
+        ticTacToeDOM,
         elapsedDOM,
         testComponentDOM,
         getRandomUserDOM,
         bmiDOM,
-        labeledSliderBmiDOM
+        labeledSliderBmiDOM,
+        labeledSliderCircleDOM
       ])
     )
 

@@ -1,4 +1,4 @@
-import xs from 'xstream';
+import xs from 'xstream'
 import {div, h2, h3} from '@cycle/dom'
 import isolate from '@cycle/isolate'
 

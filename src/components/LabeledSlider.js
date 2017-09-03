@@ -13,13 +13,7 @@ export function intent(sources) {
 export function model(props$, newValue$) {
   return props$
     .map(props => newValue$
-      .map(val => ({
-        label: props.label, 
-        unit: props.unit,
-        min: props.min, 
-        value: val, 
-        max: props.max
-      }))
+      .map(value => ({...props, value}))
       .startWith(props)
     )
     .flatten()

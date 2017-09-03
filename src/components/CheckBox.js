@@ -1,14 +1,13 @@
 import {div, input, label, h2, p} from '@cycle/dom'
 
 export function intent(sources) {
-  return sources.DOM.select('input')
-    .events('change')
+  return sources.DOM.select('input').events('change')
     .map(ev => ev.target.checked)
+    .startWith(false)
 }
 
 export function model(actions$) {
   return actions$
-    .startWith(false)
 }
 
 export function view(state$) {
