@@ -34,7 +34,7 @@ export function Examples(sources) {
     .map(([
         ticTacToeDOM,
         elapsedDOM, 
-        testComponentDOM, 
+        checkBoxDOM, 
         getRandomUserDOM, 
         bmiDOM, 
         labeledSliderBmiDOM, 
@@ -42,12 +42,12 @@ export function Examples(sources) {
       div([
         h1('Examples'),
         ticTacToeDOM,
-        elapsedDOM,
-        testComponentDOM,
-        getRandomUserDOM,
-        bmiDOM,
+        labeledSliderCircleDOM,
         labeledSliderBmiDOM,
-        labeledSliderCircleDOM
+        bmiDOM,
+        getRandomUserDOM,
+        checkBoxDOM,
+        elapsedDOM
       ])
     )
 
