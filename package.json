@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "@cycle/dom": "^18.2.0",
+    "@cycle/history": "^6.4.0",
     "@cycle/http": "^14.2.0",
     "@cycle/isolate": "^3.1.0",
     "@cycle/run": "^3.2.0",
+    "lorem-ipsum": "^1.0.4",
     "xstream": "^10.9.0"
   },
   "scripts": {
@@ -22,7 +24,7 @@
   "babel": {
     "presets": [
       "es2015"
-    ], 
+    ],
     "plugins": [
       "transform-object-rest-spread"
     ]

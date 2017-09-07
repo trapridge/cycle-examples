@@ -12,13 +12,16 @@ export function intent(sources) {
 
   const selections$ = sources.DOM.select('td').events('click')
     .map(ev => parseInt(ev.target.id))
-    .compose(dropRepeats())
+    
+    return {reset$, selections$}
+  }
   
-  return xs.merge(reset$, selections$)
-}
-  
-export function model(actions$) {
-  return actions$
+export function model({reset$, selections$}) {
+  return xs
+    .merge(
+      reset$, 
+      selections$.compose(dropRepeats())
+    )
     .fold(runGame, emptyGame())
 }
 
@@ -52,7 +55,9 @@ export function view(state$) {
             td('#9.square', [x(9), o(9)])
           ])
         ]),  
-        winner ? div([h3(`${winner} wins`), button('.play', 'Play again')]) : null,
+        winner ? 
+          div([h3(`${winner} wins`), button('.play', 'Play again')]) : 
+          null,
       ])
     })
 }
