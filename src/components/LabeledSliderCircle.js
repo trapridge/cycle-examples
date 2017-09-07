@@ -1,5 +1,5 @@
 import xs from 'xstream'
-import {div, h2} from '@cycle/dom'
+import {div, h2, section} from '@cycle/dom'
 
 import LabeledSlider from './LabeledSlider'
 
@@ -19,15 +19,19 @@ export function view(childValue$, childVDom$) {
   return xs
     .combine(childValue$, childVDom$)
     .map(([value, childVDom]) =>
-      div('.example', {style: {'min-height': '245px'}}, [
-        h2('LabeledSliderCircle'),
-        childVDom,
-        div({style: {
-          backgroundColor: '#58D3D8',
-          width: String(2 * value) + 'px',
-          height: String(2 * value) + 'px',
-          borderRadius: String(value) + 'px'
-        }})
+      div('.mdc-card .mdc-elevation--z0', [
+        section('.mdc-card__primary', [
+          h2('.mdc-card__title .mdc-card__title--large', 'LabeledSliderCircle')
+        ]),
+        section('.mdc-card__supporting-text', [
+          childVDom,
+          div({style: {
+            backgroundColor: '#58D3D8',
+            width: String(2 * value) + 'px',
+            height: String(2 * value) + 'px',
+            borderRadius: String(value) + 'px'
+          }})
+        ]),
       ])
     )
 }

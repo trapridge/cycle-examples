@@ -1,5 +1,5 @@
 import xs from 'xstream';
-import {div, input, h2, h3} from '@cycle/dom';
+import {div, input, h2, h3, section} from '@cycle/dom';
 
 export function intent(sources) {
   return {
@@ -24,19 +24,21 @@ export function model(actions) {
 
 export function view(state$) {
   return state$.map(({weight, height, bmi}) =>
-    div('.example', [
-      h2('BMI'),
-      div([
-        input('.weight', 
-          {attrs: {type: 'range', min: 40, max: 140, value: weight}}),
-        'Weight ' + weight + 'kg',
+    div('.mdc-card .mdc-elevation--z0', [
+      section('.mdc-card__primary', [
+        h2('.mdc-card__title .mdc-card__title--large', 'BMI')
       ]),
-      div([
-        input('.height', 
-          {attrs: {type: 'range', min: 140, max: 210, value: height}}),
-        'Height ' + height + 'cm',
+      section('.mdc-card__supporting-text', [
+        div([
+          input('.weight', {attrs: {type: 'range', min: 40, max: 140, value: weight}}),
+          'Weight ' + weight + 'kg'
+        ]),
+        div([
+          input('.height', {attrs: {type: 'range', min: 140, max: 210, value: height}}),
+          'Height ' + height + 'cm'
+        ]),
+        h3('BMI is ' + bmi)
       ]),
-      h3('BMI is ' + bmi)
     ])
   )
 }

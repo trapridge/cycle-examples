@@ -1,5 +1,5 @@
 import xs from 'xstream'
-import {div, h2, h3} from '@cycle/dom'
+import {div, h2, h3, section} from '@cycle/dom'
 import isolate from '@cycle/isolate'
 
 import LabeledSlider from './LabeledSlider'
@@ -38,11 +38,15 @@ export function model(weightValue$, heightValue$) {
 export function view(bmi$, weightVDom$, heightVDom$) {
   return xs.combine(bmi$, weightVDom$, heightVDom$)
     .map(([bmi, weightVDom, heightVDom]) =>
-      div('.example', [
-        h2('LabeledSliderBMI'),
-        weightVDom,
-        heightVDom,
-        h3('BMI is ' + bmi)
+      div('.mdc-card .mdc-elevation--z0', [
+        section('.mdc-card__primary', [
+          h2('.mdc-card__title .mdc-card__title--large', 'LabeledSliderBMI')
+        ]),
+        section('.mdc-card__supporting-text', [
+          weightVDom,
+          heightVDom,
+          h3('BMI is ' + bmi)
+        ]),
       ])
     )
 }
