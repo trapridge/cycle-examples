@@ -65,7 +65,7 @@ export function view(state$) {
           ]),
           section('.mdc-card__actions', [
             winner ? 
-              button('.mdc-button .mdc-button--raised .mdc-card__action', {attrs: {'id': 'play-again'}}, 'Play again') : 
+              button('.mdc-button .mdc-button--raised .mdc-card__action', {attrs: {'id': 'play-again', 'data-mdc-auto-init': 'MDCRipple'}}, 'Play again') : 
               null
           ])
         ])

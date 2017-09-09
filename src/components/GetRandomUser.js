@@ -1,4 +1,4 @@
-import {div, button, h3, h2, h4, a, section, makeDOMDriver} from '@cycle/dom'
+import {div, button, h3, h2, h4, a, section, makeDOMDriver, br} from '@cycle/dom'
 
 export function intent(sources) {
   return {
@@ -25,16 +25,24 @@ export function model(actions$) {
 export function view(state$) {
   return state$
     .map(user =>
-      div('.mdc-card .mdc-elevation--z0', [
-        section('.mdc-card__primary', [
-          h2('.mdc-card__title .mdc-card__title--large', 'GetRandomUser')
-        ]),
-        section('.mdc-card__supporting-text', [
-          button('.get-random', 'Get random user'),
-          user === null ? null : div('.user-details', [
-            h3('.user-name', user.name),
-            h4('.user-email', user.email),
-            a('.user-website', {attrs: {href: user.website}}, user.website)
+      div([
+        div('.mdc-card .mdc-elevation--z0', [
+          section('.mdc-card__primary', [
+            h2('.mdc-card__title .mdc-card__title--large', 'GetRandomUser')
+          ]),
+          section('.mdc-card__supporting-text', [
+            user === null ? null : div('.user-details .mdc-card .mdc-elevation--z1', [
+              section('.mdc-card__primary', [
+                h3('.mdc-card__title .mdc-card__title--large', user.name),
+                h2('.mdc-card__title .mdc-card__title--small', user.email)
+              ]),
+              section('.mdc-card__supporting-text', [
+                a('.user-website', {attrs: {href: user.website}}, user.website)
+              ])
+            ])
+          ]),
+          section('.mdc-card__actions', [
+            button('.get-random .mdc-button .mdc-button--raised .mdc-button--accent', {attrs: {'data-mdc-auto-init': 'MDCRipple'}}, 'Get random user')
           ])
         ]),
       ])

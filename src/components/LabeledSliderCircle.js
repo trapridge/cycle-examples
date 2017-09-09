@@ -5,9 +5,9 @@ import LabeledSlider from './LabeledSlider'
 
 export function intent(sources) {
   const props$ = xs.of({
-    label: 'Radius', unit: 'px', min: 25, value: 50, max: 75
+    label: 'Radius', unit: 'px', min: 25, value: 50, max: 75, step: 1
   });
-  const labeledSlider = LabeledSlider({DOM: sources.DOM, props: props$})
+  const labeledSlider = LabeledSlider({DOM: sources.DOM, props: props$, MDC: sources.MDC, id: 1})
   
   return {
     childVDom$: labeledSlider.DOM,

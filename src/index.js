@@ -50,13 +50,10 @@ function view(history$, exampleComponents) {
 }
 
 function main(sources) {
-  const mdcStartup$ = sources.DOM.select('#navigation').elements()
-    .filter(ev => ev.length > 0)
-    .take(1)
+  const mdcAutoInit$ = sources.DOM.select(':root').elements()
   
   const history$ = sources.DOM.select('nav > a').events('click')
     .map(e => e.target.dataset.page)
-    .debug()
     .compose(dropRepeats())
 
   const exampleComponents = 
@@ -74,7 +71,7 @@ function main(sources) {
     history: history$,
     DOM: vdom$,
     HTTP: http$,
-    MdcStartup: mdcStartup$
+    MDC: mdcAutoInit$
   }
 }
 
@@ -82,5 +79,5 @@ run(main, {
   DOM: makeDOMDriver('#app'),
   history: makeHistoryDriver(),
   HTTP: makeHTTPDriver(),
-  MdcStartup: mdcDriver
+  MDC: mdcDriver
 })

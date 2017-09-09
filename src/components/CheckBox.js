@@ -10,13 +10,12 @@ export function model(actions$) {
   return actions$
 }
 
-
-function renderCheckBox() {
+function renderCheckBox(checked) {
   return (
-    div('.mdc-checkbox', [
+    div('.mdc-checkbox', {attrs: {'id': 'cbox2', 'data-mdc-auto-init': 'MDCCheckbox'}}, [
       input(
         '.mdc-checkbox__native-control', 
-        {attrs: {'type': 'checkbox', 'id': 'cbox'}}
+        {attrs: {'type': 'checkbox', 'id': 'cbox', 'checked': checked}}
       ),
       div('.mdc-checkbox__background', [
         svg(
@@ -47,7 +46,7 @@ export function view(state$) {
         section('.mdc-card__supporting-text', [
           // input({attrs: {type: 'checkbox', id: 'c'}}),
           div('.mdc-form-field', [
-            renderCheckBox(),
+            renderCheckBox(toggled),
             label({attrs: {for: 'cbox'}}, 'Toggle me'),
           ]),
           p(toggled ? 'ON' : 'off')
