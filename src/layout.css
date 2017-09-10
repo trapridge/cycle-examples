@@ -1,3 +1,5 @@
+/* LAYOUT */
+
 section.content {
   display: flex;
   flex-direction: row;
@@ -13,7 +15,6 @@ section.content > div.right {
   margin: 1em 1em 1em 1em;
 }
 
-
 /* stack for mobile */
 @media (max-width: 650px) {
   section.content {
@@ -21,22 +22,6 @@ section.content > div.right {
   }
 }
 
-.square{
-  width: 100px;
-  height: 100px;
-}
+/* TIC TAC TOE BOARD*/ 
 
-.v {
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
-}
 
-.h {
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
-}
-
-td {
-  text-align: center;
-  font-size: 50px
-}

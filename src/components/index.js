@@ -1,15 +1,15 @@
-import CheckBox from './CheckBox'
-import GetRandomUser from './GetRandomUser'
-import LabeledSliderBmi from './LabeledSliderBmi'
-import LabeledSliderCircle from './LabeledSliderCircle'
-import SecondsElapsed from './SecondsElapsed'
-import TicTacToe from './TicTacToe'
+import CheckBox from './CheckBox/CheckBox'
+import RandomUser from './RandomUser/RandomUser'
+import BMI from './BMI/BMI'
+import Circle from './Circle/Circle'
+import SecondsElapsed from './SecondsElapsed/SecondsElapsed'
+import TicTacToe from './TicTacToe/TicTacToe'
 
 export {
-    CheckBox, 
-    GetRandomUser,
-    LabeledSliderBmi,
-    LabeledSliderCircle,
-    SecondsElapsed, 
-    TicTacToe, 
+  CheckBox, 
+  RandomUser,
+  BMI,
+  Circle,
+  SecondsElapsed, 
+  TicTacToe, 
 }

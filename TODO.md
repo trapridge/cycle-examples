@@ -1,8 +1,9 @@
 # TODO
 
  [X] Eject
- [ ] Add slider & button styles
- [ ] Eslint with babel
- [ ] Onionfy example
+ [X] Add slider & button styles
+ [X] Eslint with babel
  [ ] Webpack 2, https://webpack.js.org/guides/migrating/
- [ ] PostCSS
+ [ ] PostCSS, csslist
+ [ ] Tests
+ [ ] Onionfy example

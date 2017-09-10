@@ -37,7 +37,7 @@ export function runGame(currentGame, command) {
   // computer plays with noughts
   const nextNought = getNextRandomMove([...crosses, command], noughts)
 
-  // ran out of available positions --> draw
+  // ran out of available positions --> a draw
   if (nextNought === undefined) {
     return {
       ...currentGame, 
