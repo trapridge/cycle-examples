@@ -10,7 +10,7 @@ import './TicTacToe.css'
 export function intent(sources) {
   const reset$ = sources.DOM.select('#play-again').events('click')
     .map(() => 'reset')
-  const selections$ = sources.DOM.select('td').events('click')
+  const selections$ = sources.DOM.select('.square').events('click')
     .map(ev => parseInt(ev.target.id))
   
   return {reset$, selections$}

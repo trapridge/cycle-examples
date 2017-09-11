@@ -18,24 +18,39 @@ const config = {
     path: '/'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015']
-        },
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader', 
+            options: {
+              presets: ['es2015']
+            }
+          },
+          {
+            loader: 'eslint-loader'
+          }
+        ],
       },
       { 
         test: /\.css$/, 
-        loader: "style-loader!css-loader" 
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader'
+          }, 
+          {
+            loader: 'css-loader',
+          },
+        ]
       }
-    ]
+    ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new ProgressBarPlugin()
+    new ProgressBarPlugin(),
   ]
 }
 
