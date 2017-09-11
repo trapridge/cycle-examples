@@ -1,6 +1,8 @@
-.square{
-  width: 100px;
-  height: 100px;
+.square {
+  width: 75px;
+  height: 75px;
+  text-align: center;
+  font-size: 50px;
 }
 
 .v {
@@ -13,7 +15,3 @@
   border-bottom: 1px solid #000;
 }
 
-td {
-  text-align: center;
-  font-size: 50px
-}

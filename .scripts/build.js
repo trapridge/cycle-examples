@@ -28,6 +28,10 @@ const compiler = webpack({
           presets: ['es2015']
         },
         exclude: /node_modules/
+      },
+      { 
+        test: /\.css$/, 
+        loader: "style-loader!css-loader" 
       }
     ]
   },
