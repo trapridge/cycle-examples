@@ -6,9 +6,14 @@
  [X] Build & deploy
  [X] Webpack 3, https://webpack.js.org/guides/migrating/
  [X] responsive tictactoe
- [ ] Reducer pattern
+ [X] Reducer pattern
  [ ] shrinkwrap
+ [ ] example descriptions
+ [ ] build
+ [ ] put on github pages
+ [ ] noughts and crosses
  [ ] Tests
  [ ] Onionfy example
  [ ] more examples
- [ ] PostCSS, cssnext, cssmodules, stylelint
+ [ ] PostCSS, cssnext, cssmodules, 
+ [ ] non-global MDC
