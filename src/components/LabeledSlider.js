@@ -1,18 +1,17 @@
 import {renderSlider} from '../helpers/MdcDom'
 
-let incId = 0
+let idCounter = 0
 
-function randomName() {
-  return LabeledSlider.name + (incId++)
+function getUniqueId() {
+  return LabeledSlider.name + (idCounter++)
 }
 
-export function intent(sources, id) {
-  const newValue$ = sources.MDC.sliderInput(`#${id}`)
+export function intent(sources, uniqueId) {
+  const newValue$ = sources.MDC.sliderInput(`#${uniqueId}`)
 
   return { 
     props$: sources.props, 
     newValue$,
-    id: sources.id
   }
 }
 
@@ -26,15 +25,23 @@ export function model(props$, newValue$) {
     .remember()
 }
 
-export function view(state$, id) {
+export function view(state$, uniqueId) {
   return state$
-    .map(state => renderSlider(state.min, state.max, state.value, state.label, state.unit, state.step, id))
+    .map(state => renderSlider(
+      state.min, 
+      state.max, 
+      state.value, 
+      state.label, 
+      state.unit, 
+      state.step, 
+      uniqueId
+    ))
 }
 
-export default function LabeledSlider(sources, id = randomName()) {
-  const {props$, newValue$} = intent(sources, id)
+export default function LabeledSlider(sources, uniqueId = getUniqueId()) {
+  const {props$, newValue$} = intent(sources, uniqueId)
   const state$ = model(props$, newValue$)
-  const vdom$ = view(state$, id)
+  const vdom$ = view(state$, uniqueId)
     
   return {
     DOM: vdom$,
