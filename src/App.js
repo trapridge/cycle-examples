@@ -10,7 +10,7 @@ function renderNavigation() {
   return (
     nav('.mdc-list .mdc-elevation--z20',
       Object.keys(examples).map(example => a('.mdc-list-item', {
-        'attrs': {'data-mdc-auto-init': 'MDCRipple', 'id': 'renderNavigation'},        
+        'attrs': {'data-mdc-auto-init': 'MDCRipple', 'id': 'renderNavigation'},
         'dataset': {'page': example}
       }, example))
     )
